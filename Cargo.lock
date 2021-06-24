@@ -589,6 +589,8 @@ dependencies = [
 [[package]]
 name = "evm"
 version = "0.28.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ff50bbacb1b2149e29cc31bdd73dc2fe6d3cc0d291c438ec1cb3cdb7b2f8aa1c"
 dependencies = [
  "environmental",
  "ethereum",
@@ -606,6 +608,8 @@ dependencies = [
 [[package]]
 name = "evm-core"
 version = "0.28.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7828a238e25e8c5b5a23a2114e6f3863780ffd1dca6f7f74eecfd51271a8c573"
 dependencies = [
  "funty",
  "parity-scale-codec",
@@ -616,6 +620,8 @@ dependencies = [
 [[package]]
 name = "evm-gasometer"
 version = "0.28.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b61792ef56c7772b6d9425674852241dddcbb5fd507e6849c63ce39d1ad74e5e"
 dependencies = [
  "environmental",
  "evm-core",
@@ -633,6 +639,7 @@ dependencies = [
  "ethjson",
  "evm",
  "hex",
+ "laika",
  "parity-bytes",
  "parity-crypto",
  "primitive-types",
@@ -646,6 +653,8 @@ dependencies = [
 [[package]]
 name = "evm-runtime"
 version = "0.28.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4b7b8ae833004b1d619997d8a31b61b291b0bb3a7ed0af709342331a9a217d53"
 dependencies = [
  "environmental",
  "evm-core",
@@ -753,6 +762,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "92c171d55b98633f4ed3860808f004099b36c1cc29c42cfc53aa8591b21efcf2"
 dependencies = [
  "crunchy",
+]
+
+[[package]]
+name = "heck"
+version = "0.3.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6d621efb26863f0e9924c6ac577e8275e5e6b77455db64ffa6c65c904e9e132c"
+dependencies = [
+ "unicode-segmentation",
 ]
 
 [[package]]
@@ -871,6 +889,18 @@ dependencies = [
  "hash-db",
  "plain_hasher",
  "tiny-keccak",
+]
+
+[[package]]
+name = "laika"
+version = "0.1.0"
+dependencies = [
+ "evm",
+ "primitive-types",
+ "serde",
+ "serde_json",
+ "serde_test",
+ "structopt",
 ]
 
 [[package]]
@@ -1142,6 +1172,30 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1d6ea3c4595b96363c13943497db34af4460fb474a95c43f4446ad341b8c9785"
 dependencies = [
  "toml",
+]
+
+[[package]]
+name = "proc-macro-error"
+version = "1.0.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "da25490ff9892aab3fcf7c36f08cfb902dd3e71ca0f9f9517bea02a73a5ce38c"
+dependencies = [
+ "proc-macro-error-attr",
+ "proc-macro2",
+ "quote",
+ "syn",
+ "version_check",
+]
+
+[[package]]
+name = "proc-macro-error-attr"
+version = "1.0.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a1be40180e52ecc98ad80b184934baf3d0d29f979574e439af5a55274b35f869"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "version_check",
 ]
 
 [[package]]
@@ -1607,6 +1661,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "serde_test"
+version = "1.0.126"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bd1055d1c20532080b9da5040ec8e27425f4d4573d8e29eb19ba4ff1e4b9da2d"
+dependencies = [
+ "serde",
+]
+
+[[package]]
 name = "sha2"
 version = "0.9.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1666,6 +1729,30 @@ name = "strsim"
 version = "0.8.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8ea5119cdb4c55b55d432abb513a0429384878c15dde60cc77b1c99de1a95a6a"
+
+[[package]]
+name = "structopt"
+version = "0.3.21"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5277acd7ee46e63e5168a80734c9f6ee81b1367a7d8772a2d765df2a3705d28c"
+dependencies = [
+ "clap",
+ "lazy_static",
+ "structopt-derive",
+]
+
+[[package]]
+name = "structopt-derive"
+version = "0.4.14"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5ba9cdfda491b814720b6b06e0cac513d922fc407582032e8706e9f137976f90"
+dependencies = [
+ "heck",
+ "proc-macro-error",
+ "proc-macro2",
+ "quote",
+ "syn",
+]
 
 [[package]]
 name = "subtle"
@@ -1781,6 +1868,12 @@ dependencies = [
  "hex",
  "static_assertions",
 ]
+
+[[package]]
+name = "unicode-segmentation"
+version = "1.7.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bb0d2e7be6ae3a5fa87eed5fb451aff96f2573d2694942e40543ae0bbe19c796"
 
 [[package]]
 name = "unicode-width"
