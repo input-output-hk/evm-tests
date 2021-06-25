@@ -4,7 +4,8 @@ use serde::Deserialize;
 use primitive_types::{H160, H256, U256};
 use evm::{Config, ExitSucceed, ExitError};
 use evm::executor::{StackExecutor, MemoryStackState, StackSubstateMetadata, PrecompileOutput};
-use evm::backend::{MemoryAccount, ApplyBackend, MemoryVicinity, MemoryBackend};
+use evm::backend::{MemoryAccount, ApplyBackend, MemoryVicinity};
+use laika::ledger::Ledger;
 use parity_crypto::publickey;
 use crate::utils::*;
 
@@ -123,8 +124,9 @@ pub fn test_run(name: &str, test: Test) {
 			let gas_limit: u64 = transaction.gas_limit.into();
 			let data: Vec<u8> = transaction.data.into();
 
-			let mut backend = MemoryBackend::new(&vicinity, original_state.clone());
-			let metadata = StackSubstateMetadata::new(transaction.gas_limit.into(), &gasometer_config);
+			let mut backend = Ledger::new(&vicinity, original_state.clone());
+			let metadata =
+				StackSubstateMetadata::new(transaction.gas_limit.into(), &gasometer_config);
 			let executor_state = MemoryStackState::new(metadata, &backend);
 			// TODO: adapt precompile to the fork spec
 			let precompile = istanbul_precompile;
