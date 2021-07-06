@@ -3,9 +3,9 @@ use std::convert::TryInto;
 use serde::Deserialize;
 use primitive_types::{H160, H256, U256};
 use evm::{Config, ExitSucceed, ExitError};
-use evm::executor::{StackExecutor, PrecompileOutput};
+use evm::executor::{PrecompileOutput};
 use evm::backend::{MemoryAccount, ApplyBackend, MemoryVicinity};
-use laika::ledger::{Ledger, LedgerStackState};
+use laika::{Ledger, LedgerStackState, LedgerStackExecutor};
 use parity_crypto::publickey;
 use crate::utils::*;
 
@@ -128,8 +128,11 @@ pub fn test_run(name: &str, test: Test) {
 			let executor_state = LedgerStackState::new(gas_limit, &gasometer_config, &backend);
 			// TODO: adapt precompile to the fork spec
 			let precompile = istanbul_precompile;
-			let mut executor =
-				StackExecutor::new_with_precompile(executor_state, &gasometer_config, precompile);
+			let mut executor = LedgerStackExecutor::new_with_precompile(
+				executor_state,
+				&gasometer_config,
+				precompile,
+			);
 			let total_fee = vicinity.gas_price * gas_limit;
 
 			executor.state_mut().withdraw(caller, total_fee).unwrap();

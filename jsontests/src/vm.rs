@@ -4,8 +4,7 @@ use serde::Deserialize;
 use primitive_types::{H160, U256};
 use evm::Config;
 use evm::backend::{ApplyBackend, MemoryVicinity, MemoryAccount};
-use evm::executor::StackExecutor;
-use laika::ledger::{Ledger, LedgerStackState};
+use laika::{Ledger, LedgerStackState, LedgerStackExecutor};
 use crate::utils::*;
 
 #[derive(Deserialize, Debug)]
@@ -69,7 +68,7 @@ pub fn test(name: &str, test: Test) {
 	let mut backend = Ledger::new(&vicinity, original_state);
 	let gas_limit = test.unwrap_to_gas_limit();
 	let state = LedgerStackState::new(gas_limit, &config, &backend);
-	let mut executor = StackExecutor::new(state, &config);
+	let mut executor = LedgerStackExecutor::new(state, &config);
 
 	let code = test.unwrap_to_code();
 	let data = test.unwrap_to_data();
